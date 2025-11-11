@@ -1,0 +1,40 @@
+# [Mappings](README.md): CloudTrail - logs.amazonaws.com - DeleteDestination|DeleteLogGroup|DeleteLogStream
+
+## Input Requirements
+
+|Input|Value|
+|-----|-----|
+|Vendor|AWS|
+|Product|CloudTrail|
+|Log Format|JSON|
+|Event ID Regex Pattern|`AwsApiCall-(DeleteDestination\|DeleteLogGroup\|DeleteLogStream)`|
+
+## Record Output
+
+|Output|Value|
+|------|-----|
+|Vendor|Amazon AWS|
+|Product|CloudTrail|
+|Record Type|AuditChange|
+
+## Fields Mapped
+
+|Cloud SIEM Schema Field|Original Record Key|Notes|
+|-----------------------|-------------------|-----|
+|accountId|userIdentity.accountId||
+|action|eventName||
+|application|eventSource||
+|changeTarget|requestParameters.destinationName||
+|changeType|eventName|This is a lookup field. More info to come in the catalog later...|
+|cloud_provider|None|The static text `AWS` is populated in this schema field.|
+|cloud_region|awsRegion||
+|cloud_service|None|The static text `Logs` is populated in this schema field.|
+|description|eventName|This is a lookup field. More info to come in the catalog later...|
+|device_ip|sourceIPAddress||
+|http_userAgent|userAgent||
+|normalizedAction|eventName|This is a lookup field. More info to come in the catalog later...|
+|normalizedSeverity|eventName|This is a lookup field. More info to come in the catalog later...|
+|srcDevice_ip|sourceIPAddress||
+|timestamp|eventTime|We expect the orginal record value of `eventTime` is in the format `yyyy-MM-dd'T'HH:mm:ss'Z'`|
+|user_username|userIdentity.sessionContext.sourceIdentity||
+
